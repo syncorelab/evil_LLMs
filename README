@@ -1,0 +1,54 @@
+This script was developed by 
+= Mikkel Alcalá-Haug, 
+= PhD candidate, AI-psychology and biosignals
+= for PSY3230 "The Psychology of Aritifical Intelligence" at the Norwegian University of Technology and Science, Trondheim
+= 2026
+
+=== Unsloth with LoRA 
+for fintuning of 
+=== Ollama by Meta
+
+#=====================================================================================================================================
+
+Local LoRA Fine-Tuning – Overview
+These scripts make you able to adapt a local LLM with LoRA using your own small dataset.
+
+What it does:
+1) Starts from a base model: unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit (a general instruction-following model).
+
+2) Adds a LoRA adapter: a small set of extra weights that changes the model’s style/behavior based on your examples.
+
+3) Lets you chat with the adapted model in the terminal.
+
+Conceptually: Final behavior = Base model (Instruct) + your LoRA adapter
+
+Main files:
+    *persona_config.py
+       - Sets paths and experiment name.
+       - Defines the SYSTEM_PROMPT (who the model is / how it should act).
+       - Contains hyperparameters (how strongly you fine-tune).
+
+    *data/dataset.jsonl
+       - Your training data.
+       - Format: one JSON object per line, e.g. {"user": "USER_INPUT", "assistant": "DESIRED_REPLY"}
+       - You create 100-300 of these pairs to show the model how it should respond.
+
+    *train_persona.py
+       - Loads the base model.
+       - Reads dataset.jsonl and SYSTEM_PROMPT.
+       - Trains a LoRA adapter and saves it to output/EXPERIMENT_NAME.
+
+    *chat_persona.py
+       - Loads the base model + your saved LoRA adapter.
+       - Uses the same SYSTEM_PROMPT.
+       - Opens a simple text chat in the terminal.
+
+What users need to do (conceptually)
+
+1) Define behavior in SYSTEM_PROMPT (persona_config.py).
+
+2) Create examples in data/dataset.jsonl ({"user": ..., "assistant": ...}).
+
+3) Choose hyperparameters in persona_config.py (e.g. epochs, learning rate). 
+
+4) Run training (train_persona.py), then talk to the adapted model (chat_persona.py) and compare its behavior to the base model.
