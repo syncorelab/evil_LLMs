@@ -8,7 +8,7 @@ This script was developed by
 for fintuning of 
 === Ollama by Meta
 
-#=====================================================================================================================================
+#====================================================================================================================
 
 Local LoRA Fine-Tuning – Overview
 These scripts make you able to adapt a local LLM with LoRA using your own small dataset.
