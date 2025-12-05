@@ -1,6 +1,7 @@
 This script was developed by 
 = Mikkel Alcalá-Haug, 
 = PhD candidate, AI-psychology and biosignals
+= SynCoRE lab, Norwegain University of Science and Technology
 = for PSY3230 "The Psychology of Aritifical Intelligence" at the Norwegian University of Technology and Science, Trondheim
 = 2026
 
@@ -8,7 +9,7 @@ This script was developed by
 for fintuning of 
 === Ollama by Meta
 
-#====================================================================================================================
+#==========================================================================
 
 Local LoRA Fine-Tuning – Overview
 These scripts make you able to adapt a local LLM with LoRA using your own small dataset.
